@@ -33,6 +33,21 @@ export default class TestAfter extends Component {
                         {/* <Tab3 /> */}
                     </Tab>
                 </Tabs>
+                <Fab
+                    active={this.state.active}
+                    direction="up"
+                    containerStyle={{ }}
+                    style={{ backgroundColor: '#5067FF' }}
+                    position="bottomRight"
+                    onPress={() => this.setState({ active: !this.state.active })}>
+                    <Icon name="md-funnel" />
+                    <Button style={{ backgroundColor: '#34A34F' }}>
+                    <Icon name="md-trending-up" />
+                    </Button>
+                    <Button style={{ backgroundColor: '#3B5998' }}>
+                    <Icon name="md-trending-down" />
+                    </Button>
+                </Fab>
             </Container>
         )
     }
