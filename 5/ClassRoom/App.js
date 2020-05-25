@@ -12,6 +12,7 @@ import SignUp from './screens/SignUp'
 import Loading from './screens/Loading';
 import useLinking from './navigation/useLinking';
 import {AuthContext} from './Context';
+import TestAfter from './screens/TestAfter';
 
 const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -91,6 +92,8 @@ export default function App(props) {
         await Font.loadAsync({
           ...Ionicons.font,
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+          Roboto: require("native-base/Fonts/Roboto.ttf"),
+          Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
         });
       } catch (e) {
         console.warn(e);
@@ -107,47 +110,48 @@ export default function App(props) {
     return <Loading />;
   } else {
     return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <AuthContext.Provider value={authContext}>
-          <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
-            {userToken ? (
-              <Stack.Navigator
-                screenOptions={{
-                  headerOptions: {
-                    headerShown: false,
-                  },
-                  headerStyle: {
-                    backgroundColor: '#fff',
-                    elevation: 0,
-                  },
-                  headerTintColor: '#666',
-                  headerTitleStyle: {
-                    fontWeight: 'bold',
-                  },
-                }}
-              >
-                <Stack.Screen name="Nhật ký" component={BottomTabNavigator} />
-              </Stack.Navigator>
-            ) : (
-              <AuthStack.Navigator 
-                 screenOptions={{
-                  headerStyle: {
-                    height: 0,
-                  },
-                  headerTitleStyle: {
-                    fontSize: 0,
-                  },
-                 }}
-              >
-                <AuthStack.Screen name="SignIn" component={SignIn} />
-                <AuthStack.Screen name="SignUp" component={SignUp} />
-              </AuthStack.Navigator>
-            )}
+      // <View style={styles.container}>
+      //   {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+      //   <AuthContext.Provider value={authContext}>
+      //     <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
+      //       {userToken ? (
+      //         <Stack.Navigator
+      //           screenOptions={{
+      //             headerOptions: {
+      //               headerShown: false,
+      //             },
+      //             headerStyle: {
+      //               backgroundColor: '#fff',
+      //               elevation: 0,
+      //             },
+      //             headerTintColor: '#666',
+      //             headerTitleStyle: {
+      //               fontWeight: 'bold',
+      //             },
+      //           }}
+      //         >
+      //           <Stack.Screen name="Nhật ký" component={BottomTabNavigator} />
+      //         </Stack.Navigator>
+      //       ) : (
+      //         <AuthStack.Navigator 
+      //            screenOptions={{
+      //             headerStyle: {
+      //               height: 0,
+      //             },
+      //             headerTitleStyle: {
+      //               fontSize: 0,
+      //             },
+      //            }}
+      //         >
+      //           <AuthStack.Screen name="SignIn" component={SignIn} />
+      //           <AuthStack.Screen name="SignUp" component={SignUp} />
+      //         </AuthStack.Navigator>
+      //       )}
             
-          </NavigationContainer>
-        </AuthContext.Provider>
-      </View>
+      //     </NavigationContainer>
+      //   </AuthContext.Provider>
+      // </View>
+      <TestAfter />
     );
   }
 }
